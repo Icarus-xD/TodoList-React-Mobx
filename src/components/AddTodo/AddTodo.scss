@@ -1,0 +1,38 @@
+.add-todo {
+
+  input {
+    height: 100%;
+    padding: 5px 10px;
+    border: 1px solid #000;
+    background-color: #eee;
+  }
+
+  button {
+    height: 100%;
+    max-width: 150px;
+    padding: 5px;
+    color: #f39c12;
+    background-color: #34495e;
+    border: none;
+    transition: all .15s ease-in-out;
+    transition-property: color, background-color;
+  }
+
+  button:hover {
+    color: #34495e;
+    background-color: #f39c12;
+  }
+
+  button:active {
+    color: #34495e;
+    background-color: #c07e14;
+  }
+}
+
+@media (max-width: 460px) {
+  .add-todo {
+    display: grid;
+    gap: 10px;
+    justify-items: center;
+  }
+}
