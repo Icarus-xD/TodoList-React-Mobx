@@ -48,6 +48,11 @@ class Todos {
     this.todos[index1] = this.todos.splice(index2, 1, this.todos[index1])[0];
     this.setFilteredTodos(Control.sort);
   }
+
+  editTodo(id: string, text: string) {
+    this.todos.map(todo => todo.id === id ? todo.text = text : todo);
+    this.setFilteredTodos(Control.sort);
+  }
 }
 
 export default new Todos();

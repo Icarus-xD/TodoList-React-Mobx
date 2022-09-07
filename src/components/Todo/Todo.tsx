@@ -3,11 +3,12 @@ import Todos from '../../store/Todos';
 import { ITodo } from '../../common';
 import './Todo.scss';
 import { DragEvent } from 'react';
+import Control from '../../store/Control';
 
 const Todo = observer(({id, text, completed}: ITodo): JSX.Element => {
 
-  const openEditModal = () => {
-    console.log('modal opened');
+  const openEditModal = (id: string) => {
+    Control.setEditMode(id);
   };
 
   const dragStartHandler = (event: DragEvent<HTMLLIElement>, id: string) => {
@@ -38,10 +39,10 @@ const Todo = observer(({id, text, completed}: ITodo): JSX.Element => {
       onDragEnd={(event: DragEvent<HTMLLIElement>) => dragEndHandler(event)}
       onDragOver={(event: DragEvent<HTMLLIElement>) => dragOverHandler(event)}
       onDrop={(event: DragEvent<HTMLLIElement>) => dropHandler(event, id)}
-      onDoubleClick={openEditModal}
+      onDoubleClick={() => openEditModal(id)}
     >
       <input id={id} type='checkbox' checked={completed} onChange={() => {Todos.toggleTodoCompleted(id)}} />
-      <label htmlFor={id} onDoubleClick={openEditModal}>
+      <label htmlFor={id}>
         {text}
       </label>
       <button onClick={() => Todos.deleteTodo(id)}>x</button>

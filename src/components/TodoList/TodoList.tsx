@@ -6,15 +6,18 @@ import './TodoList.scss';
 const TodoList = observer((): JSX.Element => {
 
   return (
-    <ul className='todo-list'>
-      {
-        Todos.filteredTodos.map(todo => {
-          return (
-            <Todo key={todo.id} {...todo} />
-          );
-        })
-      }
-    </ul>
+    <>
+      <span className='hint'>Double click to edit.</span>
+      <ul className='todo-list'>
+        {
+          Todos.filteredTodos.map(todo => {
+            return (
+              <Todo key={todo.id} {...todo} />
+            );
+          })
+        }
+      </ul>
+    </>
   );
 });
 

@@ -1,0 +1,76 @@
+.overlay {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba($color: #000, $alpha: .4);
+  z-index: 2;
+}
+
+.modal {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 400px;
+  width: 80%;
+  max-height: 150px;
+  height: 80%;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border-radius: 10px;
+  z-index: 3;
+
+  input {
+    width: 80%;
+  }
+
+  button {  
+    color: #f39c12;
+    background-color:#34495e;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all .15s ease-in-out;
+    transition-property: color, background-color, top;
+
+    &:hover {
+      top: 3px;
+      color: #34495e;
+      background-color: #f39c12;
+    }
+  
+    &:active {
+      color: #34495e;
+      background-color: #c07e14;
+    }
+  }
+
+  .edit-todo-btn {
+    padding: 5px 10px;
+  }
+
+  .close-modal-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+  }
+
+  .close-modal-btn:hover {
+    top: 3px;
+    color: #34495e;
+    background-color: #f39c12;
+  }
+
+  .close-modal-btn:active {
+    color: #34495e;
+    background-color: #c07e14;
+  }
+}
