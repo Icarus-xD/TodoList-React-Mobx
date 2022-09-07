@@ -1,4 +1,4 @@
-import { computed, makeAutoObservable, observable } from 'mobx';
+import { makeAutoObservable } from 'mobx';
 import { ITodo, sortValue } from '../common';
 import Control from './Control';
 
@@ -10,6 +10,8 @@ class Todos {
   ];
 
   filteredTodos: ITodo[] = this.todos;
+
+  draggedTodo: string = '';
 
   constructor() {
     makeAutoObservable(this);
@@ -33,6 +35,18 @@ class Todos {
   setFilteredTodos(sortValue: sortValue) {
     const sort = sortValue === 'all' ? false : true;
     this.filteredTodos = !sort ? this.todos : this.todos.filter(todo => sortValue === 'completed' ? todo.completed : !todo.completed);
+  }
+
+  setDraggedTodo(id: string) {
+    this.draggedTodo = id;
+  }
+
+  swapTodos(id: string) {
+    const index1 = this.todos.findIndex(todo => todo.id === this.draggedTodo);
+    const index2 = this.todos.findIndex(todo => todo.id === id);
+
+    this.todos[index1] = this.todos.splice(index2, 1, this.todos[index1])[0];
+    this.setFilteredTodos(Control.sort);
   }
 }
 
